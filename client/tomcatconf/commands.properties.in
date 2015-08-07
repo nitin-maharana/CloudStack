@@ -610,6 +610,13 @@ deleteNetscalerLoadBalancer=1
 configureNetscalerLoadBalancer=1
 listNetscalerLoadBalancers=1
 listNetscalerLoadBalancerNetworks=1
+registerNetscalerServicePackage=1
+registerNetscalerControlCenter=1
+listRegisteredServicePackages=1
+deleteServicePackageOffering=1
+listNetscalerControlCenter=1
+deleteNetscalerControlCenter=1
+
 
 #### nicira nvp commands
 
