@@ -1125,5 +1125,17 @@ dictionary = {
 'label.root.disk.offering': '<fmt:message key="label.root.disk.offering" />',
 'message.configure.firewall.rules.allow.traffic': '<fmt:message key="message.configure.firewall.rules.allow.traffic" />',
 'message.configure.firewall.rules.block.traffic': '<fmt:message key="message.configure.firewall.rules.block.traffic" />',
+'label.sslcertificates': '<fmt:message key="label.sslcertificates" />',
+'label.certificateid': '<fmt:message key="label.certificateid" />',
+'label.add.certificate': '<fmt:message key="label.add.certificate" />',
+'label.certificate.name': '<fmt:message key="label.certificate.name" />',
+'label.privatekey.name': '<fmt:message key="label.privatekey.name" />',
+'label.chain': '<fmt:message key="label.chain" />',
+'label.privatekey.password': '<fmt:message key="label.privatekey.password" />',
+'label.lb.protocol.tcp': '<fmt:message key="label.lb.protocol.tcp" />',
+'label.lb.protocol.udp': '<fmt:message key="label.lb.protocol.udp" />',
+'label.lb.protocol.ssl': '<fmt:message key="label.lb.protocol.ssl" />',
+'label.delete.sslcertificate': '<fmt:message key="label.delete.sslcertificate" />',
+'label.certificate.details': '<fmt:message key="label.certificate.details" />',
 };
 </script>
