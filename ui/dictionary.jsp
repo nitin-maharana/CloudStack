@@ -1137,5 +1137,6 @@ dictionary = {
 'label.lb.protocol.ssl': '<fmt:message key="label.lb.protocol.ssl" />',
 'label.delete.sslcertificate': '<fmt:message key="label.delete.sslcertificate" />',
 'label.certificate.details': '<fmt:message key="label.certificate.details" />',
+'label.netscaler.service.packages': '<fmt:message key="label.netscaler.service.packages" />',
 };
 </script>
