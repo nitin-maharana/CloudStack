@@ -489,6 +489,7 @@ under the License.
 'message.delete.affinity.group': '<fmt:message key="message.delete.affinity.group" />',
 'message.delete.gateway': '<fmt:message key="message.delete.gateway" />',
 'message.delete.project': '<fmt:message key="message.delete.project" />',
+'message.delete.sslcertificate': '<fmt:message key="message.delete.sslcertificate" />',
 'message.delete.user': '<fmt:message key="message.delete.user" />',
 'message.delete.VPN.connection': '<fmt:message key="message.delete.VPN.connection" />',
 'message.delete.VPN.customer.gateway': '<fmt:message key="message.delete.VPN.customer.gateway" />',
