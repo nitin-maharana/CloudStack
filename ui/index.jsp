@@ -1158,6 +1158,10 @@
                         <span class="icon">&nbsp;</span>
                         <span><fmt:message key="label.update.ssl.cert"/></span>
                     </div>
+                    <div id="register_ncc" class="button action main-action reduced-hide" title="Register Netscaler Control Center">
+                        <span class="icon">&nbsp;</span>
+                        <span><fmt:message key="label.action.register.ncc"/></span>
+                    </div>
                 </div>
 
                 <!-- Zone dashboard -->

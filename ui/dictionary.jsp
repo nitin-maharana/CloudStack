@@ -284,6 +284,7 @@ dictionary = {
 'label.action.reboot.systemvm.processing': '<fmt:message key="label.action.reboot.systemvm.processing" />',
 'label.action.recurring.snapshot': '<fmt:message key="label.action.recurring.snapshot" />',
 'label.action.register.iso': '<fmt:message key="label.action.register.iso" />',
+'label.action.register.ncc': '<fmt:message key="label.action.register.ncc" />',
 'label.action.register.template': '<fmt:message key="label.action.register.template" />',
 'label.action.release.ip': '<fmt:message key="label.action.release.ip" />',
 'label.action.release.ip.processing': '<fmt:message key="label.action.release.ip.processing" />',
@@ -1135,8 +1136,11 @@ dictionary = {
 'label.lb.protocol.tcp': '<fmt:message key="label.lb.protocol.tcp" />',
 'label.lb.protocol.udp': '<fmt:message key="label.lb.protocol.udp" />',
 'label.lb.protocol.ssl': '<fmt:message key="label.lb.protocol.ssl" />',
+'label.lb.protocol.http': '<fmt:message key="label.lb.protocol.http" />',
 'label.delete.sslcertificate': '<fmt:message key="label.delete.sslcertificate" />',
 'label.certificate.details': '<fmt:message key="label.certificate.details" />',
 'label.netscaler.service.packages': '<fmt:message key="label.netscaler.service.packages" />',
+'message.register.failed': '<fmt:message key="message.register.failed" />',
+'message.register.succeeded': '<fmt:message key="message.register.succeeded" />',
 };
 </script>
