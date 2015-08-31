@@ -3891,6 +3891,7 @@ public class ConfigurationManagerImpl extends ManagerBase implements Configurati
         Integer maxconn = null;
         boolean enableKeepAlive = false;
 
+
         // Verify traffic type
         for (final TrafficType tType : TrafficType.values()) {
             if (tType.name().equalsIgnoreCase(trafficTypeString)) {
@@ -4751,6 +4752,7 @@ public class ConfigurationManagerImpl extends ManagerBase implements Configurati
         return vpcProvider || nuageVpcProvider;
     }
 
+    @DB
     @Override
     @ActionEvent(eventType = EventTypes.EVENT_NETWORK_OFFERING_DELETE, eventDescription = "deleting network offering")
     public boolean deleteNetworkOffering(final DeleteNetworkOfferingCmd cmd) {
@@ -4778,6 +4780,12 @@ public class ConfigurationManagerImpl extends ManagerBase implements Configurati
             throw new InvalidParameterValueException("Can't delete network offering " + offeringId + " as its used by " + networkCount + " networks. "
                     + "To make the network offering unavaiable, disable it");
         }
+
+//        if (offering.getServicePackage() != null) {
+//            final NetworkOfferingVO temp = _networkOfferingDao.createForUpdate(offering.getId());
+//            temp.setServicePackage(null);
+//            _networkOfferingDao.update(offeringId, temp);
+//        }
 
         if (_networkOfferingDao.remove(offeringId)) {
             return true;
