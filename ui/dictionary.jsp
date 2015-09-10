@@ -1142,5 +1142,10 @@ dictionary = {
 'label.netscaler.service.packages': '<fmt:message key="label.netscaler.service.packages" />',
 'message.register.failed': '<fmt:message key="message.register.failed" />',
 'message.register.succeeded': '<fmt:message key="message.register.succeeded" />',
+'label.ncc': '<fmt:message key="label.ncc" />',
+'label.uuid': '<fmt:message key="label.uuid" />',
+'label.ncc.details': '<fmt:message key="label.ncc.details" />',
+'label.ncc.delete': '<fmt:message key="label.ncc.delete" />',
+'message.ncc.delete.confirm': '<fmt:message key="message.ncc.delete.confirm" />',
 };
 </script>
