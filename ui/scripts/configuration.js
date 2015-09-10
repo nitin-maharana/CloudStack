@@ -2899,22 +2899,7 @@
                                         isHidden: true,
                                         isBoolean: true
                                     },
-                                    "service.Lb.lbIsolationDropdown": {
-                                        label: 'label.LB.isolation',
-                                        docID: 'helpNetworkOfferingLBIsolation',
-                                        isHidden: true,
-                                        select: function(args) {
-                                            args.response.success({
-                                                data: [{
-                                                    id: 'dedicated',
-                                                    description: 'Dedicated'
-                                                }, {
-                                                    id: 'shared',
-                                                    description: 'Shared'
-                                                }]
-                                            })
-                                        }
-                                    },
+
                                     "service.Lb.inlineModeDropdown": {
                                         label: 'label.mode',
                                         docID: 'helpNetworkOfferingMode',
@@ -2968,6 +2953,23 @@
                                                     args.response.error(parseXMLHttpResponse(data));
                                                 }
                                             });
+                                        }
+                                    },
+
+                                    "service.Lb.lbIsolationDropdown": {
+                                        label: 'label.LB.isolation',
+                                        docID: 'helpNetworkOfferingLBIsolation',
+                                        isHidden: true,
+                                        select: function(args) {
+                                            args.response.success({
+                                                data: [{
+                                                    id: 'dedicated',
+                                                    description: 'Dedicated'
+                                                }, {
+                                                    id: 'shared',
+                                                    description: 'Shared'
+                                                }]
+                                            })
                                         }
                                     },
 
