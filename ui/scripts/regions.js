@@ -1033,11 +1033,8 @@
                     label: 'label.ncc',
 
                     fields: {
-                        id: {
-                            label: 'label.id'
-                        },
                         uuid: {
-                            label: 'label.uuid'
+                            label: 'label.id'
                         },
                         ipaddress: {
                             label: 'label.ipaddress'
@@ -1222,13 +1219,10 @@
                             details: {
                                 title: 'label.details',
                                 fields: [{
-                                    id: {
+                                    uuid: {
                                         label: 'label.id'
                                     }
                                 }, {
-                                    uuid: {
-                                        label: 'label.uuid'
-                                    },
                                     ipaddress: {
                                         label: 'label.ipaddress'
                                     },
