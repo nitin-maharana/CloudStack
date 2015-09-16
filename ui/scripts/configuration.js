@@ -2527,11 +2527,11 @@
                                         }
 
                                         //show LB Isolation dropdown only when (1)LB Service is checked (2)Service Provider is Netscaler OR F5
-                                        if ((args.$form.find('.form-item[rel=\"service.Lb.isEnabled\"]').find('input[type=checkbox]').is(':checked') == true) && (args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'Netscaler' || args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'F5BigIp')) {
+                                        /*if ((args.$form.find('.form-item[rel=\"service.Lb.isEnabled\"]').find('input[type=checkbox]').is(':checked') == true) && (args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'Netscaler' || args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'F5BigIp')) {
                                             args.$form.find('.form-item[rel=\"service.Lb.lbIsolationDropdown\"]').css('display', 'inline-block');
                                         } else {
                                             args.$form.find('.form-item[rel=\"service.Lb.lbIsolationDropdown\"]').hide();
-                                        }
+                                        }*/
 
                                         //show Netscaler service packages only when (1)LB Service is checked (2)Service Provider is Netscaler
                                         if ((args.$form.find('.form-item[rel=\"service.Lb.isEnabled\"]').find('input[type=checkbox]').is(':checked') == true) && (args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'Netscaler')) {
@@ -2541,9 +2541,9 @@
                                         }
 
                                         //show Netscaler service package is none then hide LbIsolationDropdown
-                                        if ((args.$form.find('.form-item[rel=\"service.Lb.isEnabled\"]').find('input[type=checkbox]').is(':checked') == true) && (args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'Netscaler') && (args.$form.find('.form-item[rel=\"service.Lb.Netscaler.servicePackages\"]').find('select').val() != "")) {
+                                        /*if ((args.$form.find('.form-item[rel=\"service.Lb.isEnabled\"]').find('input[type=checkbox]').is(':checked') == true) && (args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'Netscaler') && (args.$form.find('.form-item[rel=\"service.Lb.Netscaler.servicePackages\"]').find('select').val() != "")) {
                                             args.$form.find('.form-item[rel=\"service.Lb.lbIsolationDropdown\"]').hide();
-                                        }
+                                        }*/
 
                                         //show Elastic LB checkbox only when (1)LB Service is checked (2)Service Provider is Netscaler (3)Guest IP Type is Shared
                                         if ((args.$form.find('.form-item[rel=\"service.Lb.isEnabled\"]').find('input[type=checkbox]').is(':checked') == true) && (args.$form.find('.form-item[rel=\"service.Lb.provider\"]').find('select').val() == 'Netscaler') && (args.$form.find('.form-item[rel=\"guestIpType\"]').find('select').val() == 'Shared')) {
@@ -2921,6 +2921,7 @@
 
                                     "service.Lb.Netscaler.servicePackages": {
                                         label: 'label.netscaler.service.packages',
+                                        docID: 'helpNetscalerServicePackages',
                                         isHidden: true,
                                         select: function(args) {
                                             $.ajax({
@@ -2938,12 +2939,15 @@
                                                         data: $.merge(
                                                             [{
                                                                 id: null,
-                                                                description: 'None'
+                                                                description: 'None',
+                                                                desc: 'None'
                                                             }],
                                                             $.map(servicePackages, function(elem) {
                                                                 return {
                                                                     id: elem.id,
-                                                                    description: elem.name
+                                                                    description: elem.name,
+                                                                    desc: elem.description
+
                                                                 };
                                                             })
                                                         )
@@ -3048,6 +3052,7 @@
 
                                     if (key == 'service.Lb.Netscaler.servicePackages' && value != "") {
                                        inputData['details[' + 0 + '].servicepackageuuid'] = value;
+                                       inputData['details[' + 1 + '].servicepackagedescription'] = args.$form.find('#label_netscaler_service_packages option:selected').data().jsonObj.desc;
                                     }
 
 
