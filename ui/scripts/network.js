@@ -4026,7 +4026,6 @@
                                                             success: function(json) {
                                                                 if (json.listsslcertsresponse != null) {
                                                                     lbRule._hideFields.push('sslcertificate');
-                                                                    sslCertData = {_buttonLabel: json.listsslcertsresponse.sslcert?json.listsslcertsresponse.sslcert[0].name:"None"};
                                                                 }
                                                             }
                                                         });
@@ -4086,7 +4085,6 @@
                                                                 name: 7
                                                             },
                                                             sticky: stickyData,
-                                                            sslcertificate: sslCertData,
                                                             autoScale: {
                                                                 lbRuleID: lbRule.id
                                                             }
