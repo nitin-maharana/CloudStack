@@ -2936,21 +2936,13 @@
                                                     }
 
                                                     args.response.success({
-                                                        data: $.merge(
-                                                            [{
-                                                                id: null,
-                                                                description: 'None',
-                                                                desc: 'None'
-                                                            }],
-                                                            $.map(servicePackages, function(elem) {
-                                                                return {
-                                                                    id: elem.id,
-                                                                    description: elem.name,
-                                                                    desc: elem.description
-
-                                                                };
-                                                            })
-                                                        )
+                                                        data:   $.map(servicePackages, function(elem) {
+                                                            return {
+                                                                id: elem.id,
+                                                                description: elem.name,
+                                                                desc: elem.description
+                                                            };
+                                                        })
                                                     });
                                                 },
                                                 error: function(data) {
