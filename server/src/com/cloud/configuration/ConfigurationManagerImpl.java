@@ -4437,6 +4437,8 @@ public class ConfigurationManagerImpl extends ManagerBase implements Configurati
             offeringFinal.setServiceOfferingId(serviceOfferingId);
         }
 
+        //Set Service package id
+        offeringFinal.setServicePackage(servicePackageUuid);
         // validate the details
         if (details != null) {
             validateNtwkOffDetails(details, serviceProviderMap);
