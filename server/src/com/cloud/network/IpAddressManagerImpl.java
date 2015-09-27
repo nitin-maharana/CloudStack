@@ -1026,6 +1026,8 @@ public class IpAddressManagerImpl extends ManagerBase implements IpAddressManage
             throw new ResourceAllocationException("No sush pod exists", ResourceType.network);
 
         vo = _privateIPAddressDao.takeIpAddress(zone.getId(), podvo.getId(), 0, caller.getId() + "");
+        if(vo == null)
+            throw new ResourceAllocationException("Unable to allocate IP from this Pod", ResourceType.network);
         if (vo.getIpAddress() == null)
             throw new ResourceAllocationException("Unable to allocate IP from this Pod", ResourceType.network);
 
