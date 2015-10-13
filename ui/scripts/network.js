@@ -3595,8 +3595,29 @@
                                                             return 2; //hide Autoscale button (both header and form)
                                                         }
                                                     } else { //from VPC section
-                                                        //VPC doesn't support autoscale
-                                                        return 2;
+                                                        var lbProviderIsNetscaler = false;
+                                                        var services = args.context.vpc[0].service;
+                                                        if (services != null) {
+                                                            for (var i = 0; i < services.length; i++) {
+                                                                if (services[i].name == 'Lb') {
+                                                                    var providers = services[i].provider;
+                                                                    if (providers != null) {
+                                                                        for (var k = 0; k < providers.length; k++) {
+                                                                            if (providers[k].name == 'Netscaler') {
+                                                                                lbProviderIsNetscaler = true;
+                                                                                break;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                    break;
+                                                                }
+                                                            }
+                                                        }
+                                                        if (lbProviderIsNetscaler == true) { //AutoScale is only supported on Netscaler (but not on any other provider like VirtualRouter)
+                                                            return false; //show AutoScale button
+                                                        } else {
+                                                            return 2; //hide Autoscale button (both header and form)
+                                                        }
                                                     }
                                                 }
                                             },
