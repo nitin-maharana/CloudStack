@@ -1140,6 +1140,7 @@ dictionary = {
 'label.delete.sslcertificate': '<fmt:message key="label.delete.sslcertificate" />',
 'label.certificate.details': '<fmt:message key="label.certificate.details" />',
 'label.netscaler.service.packages': '<fmt:message key="label.netscaler.service.packages" />',
+'label.netscaler.service.packages.description': '<fmt:message key="label.netscaler.service.packages.description" />',
 'message.register.failed': '<fmt:message key="message.register.failed" />',
 'message.register.succeeded': '<fmt:message key="message.register.succeeded" />',
 'label.ncc': '<fmt:message key="label.ncc" />',
