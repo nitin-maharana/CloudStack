@@ -3891,7 +3891,6 @@ public class ConfigurationManagerImpl extends ManagerBase implements Configurati
         Integer maxconn = null;
         boolean enableKeepAlive = false;
         String servicePackageuuid = cmd.getServicePackageId();
-        s_logger.debug("service package description is: " + cmd.getDetails().get(NetworkOffering.Detail.servicepackagedescription + ""));
         // Verify traffic type
         for (final TrafficType tType : TrafficType.values()) {
             if (tType.name().equalsIgnoreCase(trafficTypeString)) {
