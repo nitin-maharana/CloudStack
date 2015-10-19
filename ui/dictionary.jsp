@@ -1148,5 +1148,6 @@ dictionary = {
 'label.ncc.details': '<fmt:message key="label.ncc.details" />',
 'label.ncc.delete': '<fmt:message key="label.ncc.delete" />',
 'message.ncc.delete.confirm': '<fmt:message key="message.ncc.delete.confirm" />',
+'label.deploy.instance': '<fmt:message key="label.deploy.instance" />'
 };
 </script>
