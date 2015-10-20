@@ -117,7 +117,7 @@
                                     var jsonObj;
                                     jsonObj = json.listvmsnapshotresponse.vmSnapshot[0];
                                     args.response.success({
-                                        //actionFilter: vmActionfilter,
+                                        actionFilter: vmActionfilter,
                                         data: jsonObj
                                     });
                                 }
@@ -238,5 +238,18 @@
             }
             //detailview end
         }
+    };
+
+    var vmActionfilter = cloudStack.actionFilter.affinitygroupActionfilter = function(args) {
+        var allowedActions = [];
+
+        allowedActions.push("remove");
+        allowedActions.push("restart");
+
+        if (args && args.context && args.context.instances && args.context.instances[0].hypervisor && args.context.instances[0].hypervisor == "VMware") {
+            allowedActions.push("start");
+        }
+
+        return allowedActions;
     }
 })(jQuery, cloudStack);
