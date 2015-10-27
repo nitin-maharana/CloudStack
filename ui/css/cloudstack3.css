@@ -9636,6 +9636,10 @@ div.container div.panel div#details-tab-addloadBalancer.detail-group div.loadBal
   background-position: -601px -400px;
 }
 
+.system-dashboard.zone .status_box li.netscaler-appliances .icon {
+  background-position: -601px -400px;
+}
+
 /*Projects
 ** View switcher*/
 #header .view-switcher {

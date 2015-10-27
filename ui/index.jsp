@@ -1238,6 +1238,14 @@
                                   view-all-title="<fmt:message key="label.sockets"/>"
                                   view-all-target="sockets"><fmt:message key="label.view.all"/></span>
                         </li>
+                        <li class="block netscaler-appliances">
+                            <span class="header"><fmt:message key="label.netscaler.appliances"/></span>
+                            <span class="icon">&nbsp;</span>
+                            <span class="overview total" data-item="netscalerApplianceCount"></span>
+                            <span class="button view-all hosts"
+                                  view-all-title="<fmt:message key="label.netscaler.appliances"/>"
+                                  view-all-target="netscalerAppliances"><fmt:message key="label.view.all"/></span>
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -1126,5 +1126,11 @@ under the License.
 'message.removed.ssh.key.pair': '<fmt:message key="message.removed.ssh.key.pair" />',
 'message.please.select.ssh.key.pair.use.with.this.vm': '<fmt:message key="message.please.select.ssh.key.pair.use.with.this.vm" />',
 'message.ldap.group.import': '<fmt:message key="message.ldap.group.import" />'
+'label.switch.project': '<fmt:message key="label.switch.project" />',
+'label.switch.project.success': '<fmt:message key="label.switch.project.success" />',
+'label.netscaler.appliances': '<fmt:message key="label.netscaler.appliances" />',
+'message.action.start.appliance': '<fmt:message key="message.action.start.appliance" />',
+'message.action.stop.appliance': '<fmt:message key="message.action.stop.appliance" />',
+'message.action.destroy.appliance': '<fmt:message key="message.action.destroy.appliance" />'
 });
 </script>

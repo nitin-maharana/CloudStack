@@ -400,14 +400,23 @@
                                     });
                                 }
 
-                                        args.response.success({
-                                            data: {
-                                                virtualRouterCount: (total1 + total2)
-                                            }
-                                        });
-                                    }
-                                });
-                                dataFns.capacity();
+                                dataFns.netscalerApplianceCount($.extend(data, {
+                                    virtualRouterCount: (total1 + total2)
+                                }));
+                            }
+                        });
+                    },
+
+                    netscalerApplianceCount: function (data) {
+                        $.ajax({
+                            url: createURL('listNsVpx'),
+                            success: function (json) {
+                                var total = json.listNsVpx.count ? json.listNsVpx.count : 0;
+                                dataFns.capacity($.extend(data, {
+                                    netscalerApplianceCount: total
+                                }));
+                            }
+                        });
                     },
 
                     capacity: function (data) {
@@ -9386,7 +9395,30 @@
 
                             return listView;
                         },
+                        netscalerAppliances: function () {
+                             var listView = $.extend(true, {
+                             },
+                             cloudStack.sections.system.subsections.netscalerAppliances.listView, {
+                                 dataProvider: function (args) {
+                                     var data = {
+                                     };
+                                     listViewDataProvider(args, data);
 
+                                     $.ajax({
+                                         url: createURL('listNsVpx'),
+                                         data: data,
+                                         success: function (json) {
+                                             var items = json.listNsVpx.NxVpx;
+                                             args.response.success({
+                                                 data: items
+                                             });
+                                         }
+                                     });
+                                 },
+                             });
+
+                             return listView;
+                        },
                         sockets: function () {
                             var listView = {
                                 id: 'sockets',
@@ -10957,6 +10989,10 @@
                                  'Error': 'off',
                                  'Destroyed': 'off'
                              }
+                         },
+                         requiresupgrade: {
+                             label: 'label.requires.upgrade',
+                             converter: cloudStack.converters.toBooleanText
                          }
                      },
 
@@ -11005,11 +11041,11 @@
                                  },
                                  action: function (args) {
                                      $.ajax({
-                                         url: createURL('stopNetScalerVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         url: createURL('destroyNsVpx&id=' + args.context.netscalerAppliances[0].id),
                                          dataType: 'json',
                                          async: true,
                                          success: function (json) {
-                                             var jid = json.stopNetScalerVmresponse.jobid;
+                                             var jid = json.destroyNsVPx.jobid;
                                              args.response.success({
                                                  _custom: {
                                                      jobId: jid
@@ -11035,11 +11071,11 @@
                                  },
                                  action: function (args) {
                                      $.ajax({
-                                         url: createURL('destroyNsVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         url: createURL('stopNetScalerVpx&id=' + args.context.netscalerAppliances[0].id),
                                          dataType: 'json',
                                          async: true,
                                          success: function (json) {
-                                             var jid = json.destroyNsVPx.jobid;
+                                             var jid = json.stopNetScalerVmresponse.jobid;
                                              args.response.success({
                                                  _custom: {
                                                      getUpdatedItem: function () {
@@ -11097,15 +11133,44 @@
                                              return args;
                                          }
                                      },
+                                     version: {
+                                         label: 'label.version'
+                                     },
+                                     requiresupgrade: {
+                                         label: 'label.requires.upgrade',
+                                         converter: cloudStack.converters.toBooleanText
+                                     },
                                      zonename: {
                                          label: 'label.zone'
+                                     },
+                                     dns1: {
+                                         label: 'label.dns'
+                                     },
+                                     publicip: {
+                                         label: 'label.public.ip'
+                                     },
+                                     publicmacaddress: {
+                                         label: 'label.public.mac'
                                      },
                                      serviceofferingname: {
                                          label: 'label.compute.offering'
                                      },
+                                     domain: {
+                                         label: 'label.domain'
+                                     },
+                                     account: {
+                                         label: 'label.account'
+                                     },
                                      created: {
                                          label: 'label.created',
                                          converter: cloudStack.converters.toLocalDate
+                                     },
+                                     isredundantrouter: {
+                                         label: 'label.redundant.router',
+                                         converter: cloudStack.converters.toBooleanText
+                                     },
+                                     redundantstate: {
+                                         label: 'label.redundant.state'
                                      }
                                  }],
                                  dataProvider: function (args) {
@@ -11125,26 +11190,48 @@
                              nics: {
                                  title: 'label.nics',
                                  multiple: true,
-                                 fieldsfn: getNicFields,
+                                 fields:[ {
+                                     name: {
+                                         label: 'label.name',
+                                         header: true
+                                     },
+                                     type: {
+                                         label: 'label.type'
+                                     },
+                                     traffictype: {
+                                         label: 'label.traffic.type'
+                                     },
+                                     networkname: {
+                                         label: 'label.network.name'
+                                     },
+                                     netmask: {
+                                         label: 'label.netmask'
+                                     },
+                                     ipaddress: {
+                                         label: 'label.ip.address'
+                                     },
+                                     id: {
+                                         label: 'label.id'
+                                     },
+                                     networkid: {
+                                         label: 'label.network.id'
+                                     },
+                                     isolationuri: {
+                                         label: 'label.isolation.uri'
+                                     },
+                                     broadcasturi: {
+                                         label: 'label.broadcast.uri'
+                                     }
+                                 }],
                                  dataProvider: function (args) {
                                      $.ajax({
                                          url: createURL("listNsVpx&id=" + args.context.netscalerAppliances[0].id),
                                          dataType: "json",
                                          async: true,
                                          success: function (json) {
-                                             var jsonObj = json.listNsVpx.NxVpx[0].nic;
-
                                              args.response.success({
                                                  actionFilter: netscalerApplianceActionfilter,
-                                                 data: $.map(jsonObj, function (nic, index) {
-                                                     var name = 'NIC ' + (index + 1);
-                                                     if (nic.isdefault) {
-                                                         name += ' (' + _l('label.default') + ')';
-                                                     }
-                                                     return $.extend(nic, {
-                                                         name: name
-                                                     });
-                                                 })
+                                                 data: json.listNsVpx.NxVpx[0].nic
                                              });
                                          }
                                      });

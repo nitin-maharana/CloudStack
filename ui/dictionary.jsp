@@ -1019,6 +1019,7 @@ dictionary = {
 'label.public': '<fmt:message key="label.public" />',
 'label.public.interface': '<fmt:message key="label.public.interface" />',
 'label.public.ip': '<fmt:message key="label.public.ip" />',
+'label.public.mac': '<fmt:message key="label.public.mac" />',
 'label.public.ips': '<fmt:message key="label.public.ips" />',
 'label.public.network': '<fmt:message key="label.public.network" />',
 'label.public.port': '<fmt:message key="label.public.port" />',
@@ -1148,6 +1149,9 @@ dictionary = {
 'label.ncc.details': '<fmt:message key="label.ncc.details" />',
 'label.ncc.delete': '<fmt:message key="label.ncc.delete" />',
 'message.ncc.delete.confirm': '<fmt:message key="message.ncc.delete.confirm" />',
-'label.deploy.instance': '<fmt:message key="label.deploy.instance" />'
+'label.deploy.instance': '<fmt:message key="label.deploy.instance" />',
+'label.action.start.appliance': '<fmt:message key="label.action.start.appliance" />',
+'label.action.stop.appliance': '<fmt:message key="label.action.stop.appliance" />',
+'label.action.destroy.appliance': '<fmt:message key="label.action.destroy.appliance" />'
 };
 </script>
