@@ -1155,6 +1155,39 @@ public class QueryManagerImpl extends ManagerBase implements QueryService, Confi
     }
 
     @Override
+    public ListResponse<DomainRouterResponse> searchForNSVPX(ListNsVpxCmd cmd) {
+
+        Account caller = CallContext.current().getCallingAccount();
+        if(_accountMgr.isRootAdmin(caller.getAccountId())==false)
+            throw new PermissionDeniedException("Caller: " + caller.getAccountName() + "do not have permission for this operation");
+
+        SearchCriteria<DomainRouterJoinVO> sc = _routerJoinDao.createSearchCriteria();
+        List<DomainRouterJoinVO> domainRouterVOList = new ArrayList<DomainRouterJoinVO>();
+        if(cmd.getId()!=null) {
+            long nsvpxId = cmd.getId();
+            sc.addAnd("id", Op.EQ, nsvpxId);
+        }
+
+        String keyword = cmd.getKeyword();
+
+        if (keyword != null) {
+            sc.addAnd("name", Op.LIKE, "%" + keyword + "%");
+        }
+
+        sc.addAnd("role", Op.EQ, VirtualRouter.Role.NETSCALER_VM.toString());
+        sc.addAnd("state", Op.NEQ, VirtualMachine.State.Expunging.toString());
+
+        domainRouterVOList = _routerJoinDao.search(sc, null);
+
+        if(domainRouterVOList == null ||domainRouterVOList.size() <= 0) {
+            return new ListResponse<DomainRouterResponse>();
+        }
+
+        return ViewResponseHelper.createNSVPXResponse(domainRouterVOList);
+
+    }
+
+    @Override
     public ListResponse<DomainRouterResponse> searchForInternalLbVms(ListInternalLBVMsCmd cmd) {
         Pair<List<DomainRouterJoinVO>, Integer> result =
             searchForRoutersInternal(cmd, cmd.getId(), cmd.getRouterName(), cmd.getState(), cmd.getZoneId(), cmd.getPodId(), null, cmd.getHostId(), cmd.getKeyword(),

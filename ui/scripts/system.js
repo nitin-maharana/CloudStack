@@ -37,6 +37,107 @@
         });
     };
 
+    var getClusterFields = function (args) {
+    	
+    	var clusterfields = [ {
+            name: {
+                label: 'label.name'
+            }
+        },
+        {
+            id: {
+                label: 'label.id'
+            },
+            zonename: {
+                label: 'label.zone'
+            },
+            podname: {
+                label: 'label.pod'
+            },
+            hypervisortype: {
+                label: 'label.hypervisor'
+            },
+            clustertype: {
+                label: 'label.cluster.type'
+            },
+            //allocationstate: { label: 'label.allocation.state' },
+            //managedstate: { label: 'Managed State' },
+            state: {
+                label: 'label.state'
+            }
+        }, {
+            isdedicated: {
+                label: 'label.dedicated'
+            },
+            domainid: {
+                label: 'label.domain.id'
+            }
+        }];
+    	
+    	var dynamicclusterfields ={};
+    	if (args.trafficlabelinfo) {
+    		for (var i = 0; i < args.trafficlabelinfo.length; i++) {
+    			$.ajax({
+    				url: createURL('listPhysicalNetworks'),
+    				data: {
+                        id: args.trafficlabelinfo[i].physicalnetworkid
+                    },
+                    async: false,
+                    success: function (json) {
+                    	var physicalNetwork = json.listphysicalnetworksresponse.physicalnetwork[0];
+                    	var trafficLabelField = args.trafficlabelinfo[i].physicalnetworktrafficid;
+            			if (args.trafficlabelinfo[i].networklabel == null || args.trafficlabelinfo[i].networklabel == 0) {
+            				args[trafficLabelField] = _l('label.network.label.display.for.blank.value');
+            			} else {
+            				args[trafficLabelField] = args.trafficlabelinfo[i].networklabel;
+            			}
+            			
+            			var switchDisplayLabel = "";
+            			if(args.trafficlabelinfo[i].traffictype == 'Guest') {
+            				switchDisplayLabel = _l('label.guest.vswitch.name') + " " + physicalNetwork.name;
+            			} else {
+            				switchDisplayLabel = _l('label.public.vswitch.name') + " " + physicalNetwork.name;
+            			}
+            			dynamicclusterfields[trafficLabelField] = { label: switchDisplayLabel, isEditable: true}
+                    }
+    			});
+    		}
+    	}
+    	
+    	if(dynamicclusterfields) {
+    		clusterfields.push(dynamicclusterfields)
+    	}
+    	
+    	return clusterfields;
+    }
+
+    var getNicFields = function (args) {
+        var nicFields = [ {
+            name: {
+                label: 'label.name',
+                header: true
+            },
+            id: {
+                label: 'label.id'
+            },
+            networkid: {
+                label: 'label.network.id'
+            },
+            traffictype: {
+                label: 'label.traffic.type'
+            },
+            macaddress: {
+                label: 'label.mac.address'
+            }
+        }];
+
+        if (args.traffictype && args.traffictype == "Management") {
+            nicFields.push({ipaddress: { label: 'label.ip.address' }});
+        }
+
+        return nicFields;
+    }
+
     cloudStack.publicIpRangeAccount = {
         dialog: function (args) {
             return function (args) {
@@ -10989,10 +11090,6 @@
                                  'Error': 'off',
                                  'Destroyed': 'off'
                              }
-                         },
-                         requiresupgrade: {
-                             label: 'label.requires.upgrade',
-                             converter: cloudStack.converters.toBooleanText
                          }
                      },
 
@@ -11133,44 +11230,15 @@
                                              return args;
                                          }
                                      },
-                                     version: {
-                                         label: 'label.version'
-                                     },
-                                     requiresupgrade: {
-                                         label: 'label.requires.upgrade',
-                                         converter: cloudStack.converters.toBooleanText
-                                     },
                                      zonename: {
                                          label: 'label.zone'
-                                     },
-                                     dns1: {
-                                         label: 'label.dns'
-                                     },
-                                     publicip: {
-                                         label: 'label.public.ip'
-                                     },
-                                     publicmacaddress: {
-                                         label: 'label.public.mac'
                                      },
                                      serviceofferingname: {
                                          label: 'label.compute.offering'
                                      },
-                                     domain: {
-                                         label: 'label.domain'
-                                     },
-                                     account: {
-                                         label: 'label.account'
-                                     },
                                      created: {
                                          label: 'label.created',
                                          converter: cloudStack.converters.toLocalDate
-                                     },
-                                     isredundantrouter: {
-                                         label: 'label.redundant.router',
-                                         converter: cloudStack.converters.toBooleanText
-                                     },
-                                     redundantstate: {
-                                         label: 'label.redundant.state'
                                      }
                                  }],
                                  dataProvider: function (args) {
@@ -11190,48 +11258,26 @@
                              nics: {
                                  title: 'label.nics',
                                  multiple: true,
-                                 fields:[ {
-                                     name: {
-                                         label: 'label.name',
-                                         header: true
-                                     },
-                                     type: {
-                                         label: 'label.type'
-                                     },
-                                     traffictype: {
-                                         label: 'label.traffic.type'
-                                     },
-                                     networkname: {
-                                         label: 'label.network.name'
-                                     },
-                                     netmask: {
-                                         label: 'label.netmask'
-                                     },
-                                     ipaddress: {
-                                         label: 'label.ip.address'
-                                     },
-                                     id: {
-                                         label: 'label.id'
-                                     },
-                                     networkid: {
-                                         label: 'label.network.id'
-                                     },
-                                     isolationuri: {
-                                         label: 'label.isolation.uri'
-                                     },
-                                     broadcasturi: {
-                                         label: 'label.broadcast.uri'
-                                     }
-                                 }],
+                                 fieldsfn: getNicFields,
                                  dataProvider: function (args) {
                                      $.ajax({
                                          url: createURL("listNsVpx&id=" + args.context.netscalerAppliances[0].id),
                                          dataType: "json",
                                          async: true,
                                          success: function (json) {
+                                             var jsonObj = json.listNsVpx.NxVpx[0].nic;
+
                                              args.response.success({
                                                  actionFilter: netscalerApplianceActionfilter,
-                                                 data: json.listNsVpx.NxVpx[0].nic
+                                                 data: $.map(jsonObj, function (nic, index) {
+                                                     var name = 'NIC ' + (index + 1);
+                                                     if (nic.isdefault) {
+                                                         name += ' (' + _l('label.default') + ')';
+                                                     }
+                                                     return $.extend(nic, {
+                                                         name: name
+                                                     });
+                                                 })
                                              });
                                          }
                                      });

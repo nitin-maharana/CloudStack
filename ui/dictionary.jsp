@@ -1152,6 +1152,7 @@ dictionary = {
 'label.deploy.instance': '<fmt:message key="label.deploy.instance" />',
 'label.action.start.appliance': '<fmt:message key="label.action.start.appliance" />',
 'label.action.stop.appliance': '<fmt:message key="label.action.stop.appliance" />',
-'label.action.destroy.appliance': '<fmt:message key="label.action.destroy.appliance" />'
+'label.action.destroy.appliance': '<fmt:message key="label.action.destroy.appliance" />',
+'label.mac.address': '<fmt:message key="label.mac.address" />'
 };
 </script>
