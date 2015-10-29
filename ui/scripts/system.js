@@ -120,19 +120,13 @@
             id: {
                 label: 'label.id'
             },
-            networkid: {
-                label: 'label.network.id'
-            },
-            traffictype: {
-                label: 'label.traffic.type'
-            },
             macaddress: {
                 label: 'label.mac.address'
             }
         }];
 
         if (args.traffictype && args.traffictype == "Management") {
-            nicFields.push({ipaddress: { label: 'label.ip.address' }});
+            nicFields.push({ipaddress: { label: 'label.ip.address' },traffictype: { label: 'label.traffic.type'}});
         }
 
         return nicFields;
@@ -11138,11 +11132,11 @@
                                  },
                                  action: function (args) {
                                      $.ajax({
-                                         url: createURL('destroyNsVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         url: createURL('stopNetScalerVpx&id=' + args.context.netscalerAppliances[0].id),
                                          dataType: 'json',
                                          async: true,
                                          success: function (json) {
-                                             var jid = json.destroyNsVPx.jobid;
+                                             var jid = json.stopNetScalerVmresponse.jobid;
                                              args.response.success({
                                                  _custom: {
                                                      jobId: jid
@@ -11168,11 +11162,11 @@
                                  },
                                  action: function (args) {
                                      $.ajax({
-                                         url: createURL('stopNetScalerVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         url: createURL('destroyNsVpx&id=' + args.context.netscalerAppliances[0].id),
                                          dataType: 'json',
                                          async: true,
                                          success: function (json) {
-                                             var jid = json.stopNetScalerVmresponse.jobid;
+                                             var jid = json.destroyNsVPx.jobid;
                                              args.response.success({
                                                  _custom: {
                                                      getUpdatedItem: function () {
