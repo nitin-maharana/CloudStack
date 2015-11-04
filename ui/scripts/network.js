@@ -3490,6 +3490,10 @@
                                                             name: 'source',
                                                             description: _l('label.lb.algorithm.source')
                                                         }];
+                                                    if (typeof args.context != 'undefined') {
+                                                        var lbAlgs = getLBAlgorithms(args.context.networks[0]);
+                                                        data = (lbAlgs.length == 0) ? data : lbAlgs;
+                                                    }
                                                     args.response.success({
                                                         data: data
                                                     });
