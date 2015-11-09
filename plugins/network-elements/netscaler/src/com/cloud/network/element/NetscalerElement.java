@@ -300,7 +300,7 @@ public class NetscalerElement extends ExternalLoadBalancerDeviceManagerImpl impl
 
         method = new LbStickinessMethod(StickinessMethodType.AppCookieBased, "This is app session based sticky method, can be used only for http");
         methodList.add(method);
-        method.addParam("name", true, "cookie name passed in http header by apllication to the client", false);
+        method.addParam("cookie-name", true, "cookie name passed in http header by application to the client", false);
 
         method = new LbStickinessMethod(StickinessMethodType.SourceBased, "This is source based sticky method, can be used for any type of protocol.");
         methodList.add(method);

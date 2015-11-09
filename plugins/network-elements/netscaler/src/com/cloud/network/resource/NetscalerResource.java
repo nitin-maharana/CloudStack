@@ -2758,7 +2758,7 @@ public class NetscalerResource implements ServerResource {
                 for (Pair<String, String> param : paramsList) {
                     if ("holdtime".equalsIgnoreCase(param.first())) {
                         timeout = Long.parseLong(param.second());
-                    } else if ("name".equalsIgnoreCase(param.first())) {
+                    } else if ("cookie-name".equalsIgnoreCase(param.first())) {
                         cookieName = param.second();
                     }
                 }
