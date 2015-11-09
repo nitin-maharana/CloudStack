@@ -1038,9 +1038,6 @@
                         },
                         ipaddress: {
                             label: 'label.ipaddress'
-                        },
-                        numretries: {
-                            label: 'label.numretries'
                         }
                     },
 
@@ -1092,13 +1089,6 @@
                                         validation : {
                                             required: true,
                                         }
-                                    },
-                                    numretries: {
-                                        label: 'label.numretries',
-                                        defaultValue: '2',
-                                        validation : {
-                                            required: true,
-                                        }
                                     }
                                 }
                             },
@@ -1110,8 +1100,7 @@
                                 var data = {
                                     ipaddress: args.data.ipaddress,
                                     username: args.data.username,
-                                    password: args.data.password,
-                                    numretries: args.data.numretries
+                                    password: args.data.password
                                 };
 
                                 $.ajax({
@@ -1216,14 +1205,10 @@
                                 fields: [{
                                     uuid: {
                                         label: 'label.id'
-                                    }
-                                }, {
+                                    },
                                     ipaddress: {
                                         label: 'label.ipaddress'
-                                    },
-                                    numretries: {
-                                        label: 'label.numretries',
-                                    },
+                                    }
                                 }],
                                 dataProvider: function(args) {
                                     $.ajax({
