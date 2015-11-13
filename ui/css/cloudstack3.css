@@ -9321,6 +9321,18 @@ div.container div.panel div#details-tab-addloadBalancer.detail-group div.loadBal
   opacity: 0.56;
 }
 
+.system-dashboard.zone .status_box li .netscaler-appliance-icon {
+  background: url(../images/netscaler-appliance-icon.png) no-repeat 0px 0px;
+  padding: 22px 47px 3px;
+  left: 73px;
+  top: 43px;
+  position: absolute;
+  filter: alpha(opacity=56);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=46);
+  -moz-opacity: 0.46;
+  opacity: 0.46;
+}
+
 .system-dashboard .status_box li span {
 }
 
@@ -9636,8 +9648,8 @@ div.container div.panel div#details-tab-addloadBalancer.detail-group div.loadBal
   background-position: -601px -400px;
 }
 
-.system-dashboard.zone .status_box li.netscaler-appliances .icon {
-  background-position: -601px -400px;
+.system-dashboard.zone .status_box li.netscaler-appliances .netscaler-appliance-icon {
+  background-position: -31px -64px;
 }
 
 /*Projects

@@ -1240,7 +1240,7 @@
                         </li>
                         <li class="block netscaler-appliances">
                             <span class="header"><fmt:message key="label.netscaler.appliances"/></span>
-                            <span class="icon">&nbsp;</span>
+                            <span class="netscaler-appliance-icon">&nbsp;</span>
                             <span class="overview total" data-item="netscalerApplianceCount"></span>
                             <span class="button view-all hosts"
                                   view-all-title="<fmt:message key="label.netscaler.appliances"/>"
