@@ -398,6 +398,20 @@
                                     securityGroupsEnabledFound = true;
                                     sectionsToShow.push('securityGroups');
                                 }
+                                $.ajax({
+                                    url: createURL('listRemoteAccessVpns'),
+                                    data: {
+                                        domainid: g_domainid,
+                                        listAll: true
+                                    },
+                                    async: false,
+                                    success: function(vpnResponse) {
+                                        var isVPNEnabled = vpnResponse.listremoteaccessvpnsresponse.count;
+                                        if (isVPNEnabled) {
+                                             sectionsToShow.push('vpnuser');
+                                        }
+                                    }
+                                });
                             }
                         }
                     }
