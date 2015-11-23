@@ -10933,6 +10933,227 @@
                     }
                 }
             },
+            netscalerAppliances: {
+                 listView: {
+                     label: 'label.netscaler.appliances',
+                     id: 'netscalerAppliances',
+                     fields: {
+                         name: {
+                             label: 'label.name'
+                         },
+                         role: {
+                             label: 'label.type',
+                             converter: function (args) {
+                                 if (args == "NETSCALER_VM")
+                                 return "NetScaler VM"; else
+                                 return args;
+                             }
+                         },
+                         state: {
+                             label: 'label.status',
+                             indicator: {
+                                 'Running': 'on',
+                                 'Stopped': 'off',
+                                 'Error': 'off',
+                                 'Destroyed': 'off'
+                             }
+                         }
+                     },
+
+                     detailView: {
+                         name: 'label.netscaler.appliances',
+                         actions: {
+                             start: {
+                                 label: 'label.action.start.appliance',
+                                 messages: {
+                                     confirm: function (args) {
+                                         return 'message.action.start.appliance';
+                                     },
+                                     notification: function (args) {
+                                         return 'label.action.start.appliance';
+                                     }
+                                 },
+                                 action: function (args) {
+                                     $.ajax({
+                                         url: createURL('startNsVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         dataType: 'json',
+                                         async: true,
+                                         success: function (json) {
+                                             var jid = json.startNsVPx.jobid;
+                                             args.response.success({
+                                                 _custom: {
+                                                     jobId: jid
+                                                 }
+                                             });
+                                         }
+                                     });
+                                 },
+                                 notification: {
+                                     poll: pollAsyncJobResult
+                                 }
+                             },
+
+                             stop: {
+                                 label: 'label.action.stop.appliance',
+                                 messages: {
+                                     confirm: function (args) {
+                                         return 'message.action.stop.appliance';
+                                     },
+                                     notification: function (args) {
+                                         return 'label.action.stop.appliance';
+                                     }
+                                 },
+                                 action: function (args) {
+                                     $.ajax({
+                                         url: createURL('stopNetScalerVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         dataType: 'json',
+                                         async: true,
+                                         success: function (json) {
+                                             var jid = json.stopNetScalerVmresponse.jobid;
+                                             args.response.success({
+                                                 _custom: {
+                                                     jobId: jid
+                                                 }
+                                             });
+                                         }
+                                     });
+                                 },
+                                 notification: {
+                                     poll: pollAsyncJobResult
+                                 }
+                             },
+
+                             remove: {
+                                 label: 'label.action.destroy.appliance',
+                                 messages: {
+                                     confirm: function (args) {
+                                         return 'message.action.destroy.appliance';
+                                     },
+                                     notification: function (args) {
+                                         return 'label.action.destroy.appliance';
+                                     }
+                                 },
+                                 action: function (args) {
+                                     $.ajax({
+                                         url: createURL('destroyNsVpx&id=' + args.context.netscalerAppliances[0].id),
+                                         dataType: 'json',
+                                         async: true,
+                                         success: function (json) {
+                                             var jid = json.destroyNsVPx.jobid;
+                                             args.response.success({
+                                                 _custom: {
+                                                     getUpdatedItem: function () {
+                                                         return {
+                                                             state: 'Destroyed'
+                                                         };
+                                                     },
+                                                     jobId: jid
+                                                 }
+                                             });
+                                         }
+                                     });
+                                 },
+                                 notification: {
+                                     poll: pollAsyncJobResult
+                                 }
+                             },
+
+                             viewConsole: {
+                                 label: 'label.view.console',
+                                 action: {
+                                     externalLink: {
+                                         url: function(args) {
+                                             return clientConsoleUrl + '?cmd=access&vm=' + args.context.netscalerAppliances[0].id;
+                                         },
+                                         title: function(args) {
+                                             return args.context.netscalerAppliances[0].id.substr(0, 8); //title in window.open() can't have space nor longer than 8 characters. Otherwise, IE browser will have error.
+                                         },
+                                         width: 820,
+                                         height: 640
+                                     }
+                                 }
+                             }
+                         },
+                         tabs: {
+                             details: {
+                                 title: 'label.details',
+                                 fields:[ {
+                                     name: {
+                                         label: 'label.name'
+                                     }
+                                 },
+                                 {
+                                     id: {
+                                         label: 'label.id'
+                                     },
+                                     state: {
+                                         label: 'label.state'
+                                     },
+                                     role: {
+                                         label: 'label.type',
+                                         converter: function (args) {
+                                             if (args == "NETSCALER_VM")
+                                             return "NetScaler VM"; else
+                                             return args;
+                                         }
+                                     },
+                                     zonename: {
+                                         label: 'label.zone'
+                                     },
+                                     serviceofferingname: {
+                                         label: 'label.compute.offering'
+                                     },
+                                     created: {
+                                         label: 'label.created',
+                                         converter: cloudStack.converters.toLocalDate
+                                     }
+                                 }],
+                                 dataProvider: function (args) {
+                                     $.ajax({
+                                         url: createURL("listNsVpx&id=" + args.context.netscalerAppliances[0].id),
+                                         dataType: "json",
+                                         async: true,
+                                         success: function (json) {
+                                             args.response.success({
+                                                 actionFilter: netscalerApplianceActionfilter,
+                                                 data: json.listNsVpx.NxVpx[0]
+                                             });
+                                         }
+                                     });
+                                 }
+                             },
+                             nics: {
+                                 title: 'label.nics',
+                                 multiple: true,
+                                 fieldsfn: getNicFields,
+                                 dataProvider: function (args) {
+                                     $.ajax({
+                                         url: createURL("listNsVpx&id=" + args.context.netscalerAppliances[0].id),
+                                         dataType: "json",
+                                         async: true,
+                                         success: function (json) {
+                                             var jsonObj = json.listNsVpx.NxVpx[0].nic;
+
+                                             args.response.success({
+                                                 actionFilter: netscalerApplianceActionfilter,
+                                                 data: $.map(jsonObj, function (nic, index) {
+                                                     var name = 'NIC ' + (index + 1);
+                                                     if (nic.isdefault) {
+                                                         name += ' (' + _l('label.default') + ')';
+                                                     }
+                                                     return $.extend(nic, {
+                                                         name: name
+                                                     });
+                                                 })
+                                             });
+                                         }
+                                     });
+                                 }
+                             }
+                         }
+                     }
+                 }
+            },
             systemVms: {
                 listView: {
                     label: 'label.system.vms',
@@ -21014,6 +21235,22 @@
         } else if (jsonObj.state == 'Stopped') {
             allowedActions.push("start");
         }
+        return allowedActions;
+    }
+
+    var netscalerApplianceActionfilter = function (args) {
+        var jsonObj = args.context.item;
+        var allowedActions = [];
+
+        if (jsonObj.state == 'Running') {
+            allowedActions.push("stop");
+            allowedActions.push("viewConsole");
+        } else if (jsonObj.state == 'Stopped') {
+            allowedActions.push("start");
+        }
+
+        allowedActions.push("remove");
+
         return allowedActions;
     }
 
