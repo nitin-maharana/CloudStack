@@ -102,6 +102,7 @@ import com.cloud.event.EventTypes;
 import com.cloud.event.UsageEventUtils;
 import com.cloud.exception.ConcurrentOperationException;
 import com.cloud.exception.InvalidParameterValueException;
+import com.cloud.exception.MissingParameterValueException;
 import com.cloud.exception.PermissionDeniedException;
 import com.cloud.exception.ResourceAllocationException;
 import com.cloud.exception.StorageUnavailableException;
@@ -426,10 +427,6 @@ public class VolumeApiServiceImpl extends ManagerBase implements VolumeApiServic
         return false;
     }
 
-    public String getRandomVolumeName() {
-        return UUID.randomUUID().toString();
-    }
-
     @DB
     protected VolumeVO persistVolume(final Account owner, final Long zoneId, final String volumeName, final String url,
             final String format, final Long diskOfferingId, final Volume.State state) {
@@ -672,8 +669,8 @@ public class VolumeApiServiceImpl extends ManagerBase implements VolumeApiServic
         }
 
         String userSpecifiedName = cmd.getVolumeName();
-        if (userSpecifiedName == null) {
-            userSpecifiedName = getRandomVolumeName();
+        if (userSpecifiedName == null || userSpecifiedName.isEmpty()) {
+            throw new MissingParameterValueException("The volume name cannot be empty");
         }
 
         VolumeVO volume = commitVolume(cmd, caller, owner, displayVolume, zoneId, diskOfferingId, provisioningType, size,
