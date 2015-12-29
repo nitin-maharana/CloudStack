@@ -359,28 +359,24 @@ public class VolumeApiServiceImplTest {
         _svc.takeSnapshot(5L, Snapshot.MANUAL_POLICY_ID, 3L, null, false);
     }
 
-    // When the volume name is Null.
     @Test
     public void testNullGetVolumeNameFromCmd() {
         when(createVol.getVolumeName()).thenReturn(null);
         Assert.assertNotNull(_svc.getVolumeNameFromCommand(createVol));
     }
 
-    // When the volume name is empty.
     @Test
     public void testEmptyGetVolumeNameFromCmd() {
         when(createVol.getVolumeName()).thenReturn("");
         Assert.assertNotNull(_svc.getVolumeNameFromCommand(createVol));
     }
 
-    // When the volume name is blank.
     @Test
     public void testBlankGetVolumeNameFromCmd() {
         when(createVol.getVolumeName()).thenReturn("   ");
         Assert.assertNotNull(_svc.getVolumeNameFromCommand(createVol));
     }
 
-    // When the volume name is non-empty.
     @Test
     public void testNonEmptyGetVolumeNameFromCmd() {
         when(createVol.getVolumeName()).thenReturn("abc");

@@ -476,15 +476,19 @@ public class VolumeApiServiceImpl extends ManagerBase implements VolumeApiServic
         });
     }
 
-    /*
-     * It retrieves the volume name from CreateVolumeCmd object.
+    /**
+     * Retrieves the volume name from CreateVolumeCmd object.
+     *
      * If the retrieved volume name is null, empty or blank, then A random name
      * will be generated using getRandomVolumeName method.
+     *
+     * @param cmd
+     * @return Either the retrieved name or a random name.
      */
     public String getVolumeNameFromCommand(CreateVolumeCmd cmd) {
         String userSpecifiedName = cmd.getVolumeName();
 
-        if (userSpecifiedName == null || userSpecifiedName.isEmpty() || (userSpecifiedName.trim().length() == 0)    ) {
+        if (userSpecifiedName == null || userSpecifiedName.isEmpty() || org.apache.commons.lang.StringUtils.isBlank(userSpecifiedName)) {
             userSpecifiedName = getRandomVolumeName();
         }
 
