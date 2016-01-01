@@ -471,6 +471,7 @@ under the License.
 'message.confirm.join.project': '<fmt:message key="message.confirm.join.project" />',
 'message.confirm.remove.IP.range': '<fmt:message key="message.confirm.remove.IP.range" />',
 'message.confirm.shutdown.provider': '<fmt:message key="message.confirm.shutdown.provider" />',
+'message.confirm.force.update': '<fmt:message key="message.confirm.force.update" />',
 'message.copy.iso.confirm': '<fmt:message key="message.copy.iso.confirm" />',
 'message.copy.template': '<fmt:message key="message.copy.template" />',
 'message.create.template': '<fmt:message key="message.create.template" />',
