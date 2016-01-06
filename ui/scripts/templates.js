@@ -347,19 +347,19 @@
                                             });
                                             items.push({
                                                 id: "us",
-                                                description: "US Keboard"
+                                                description: _l('label.standard.us.keyboard')
                                             });
                                             items.push({
                                                 id: "uk",
-                                                description: "UK Keyboard"
+                                                description: _l('label.uk.keyboard')
                                             });
                                             items.push({
                                                 id: "jp",
-                                                description: "Japanese Keyboard"
+                                                description: _l('label.japanese.keyboard')
                                             });
                                             items.push({
                                                 id: "sc",
-                                                description: "Simplified Chinese"
+                                                description: _l('label.simplified.chinese.keyboard')
                                             });
                                             args.response.success({
                                                 data: items

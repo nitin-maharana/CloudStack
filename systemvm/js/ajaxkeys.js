@@ -18,6 +18,21 @@ under the License.
 */
 
 /*
+ * Below associative array contains the list of keyboard types which shares most of the keys with standard (US) keyboard
+ * e.g. UK, french
+ * If your keyboard type shares most of keys with standard (US) keyboard add it here
+ */
+var cookedKeyboardTypes = {"us":_l('label.standard.us.keyboard'),
+        "uk":_l('label.uk.keyboard'),
+        "fr":_l('label.french.azerty.keyboard')}
+
+/*
+ * Below associative array contains the list of raw keyboard types e.g. Japanese, Simplified Chinese
+ * If your keyboard type falls in this category add it here
+ */
+var rawKeyboardTypes = {"jp":_l('label.japanese.keyboard'),
+        "sc":_l('label.simplified.chinese.keyboard')}
+/*
  * This var contains the limited keyboard translation tables.
  * This is the table that users can modify to make special keyboard to work properly.
  * They are used by the ajaxviewer.js
