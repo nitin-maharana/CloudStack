@@ -488,7 +488,7 @@ public class VolumeApiServiceImpl extends ManagerBase implements VolumeApiServic
     public String getVolumeNameFromCommand(CreateVolumeCmd cmd) {
         String userSpecifiedName = cmd.getVolumeName();
 
-        if (userSpecifiedName == null || userSpecifiedName.isEmpty() || org.apache.commons.lang.StringUtils.isBlank(userSpecifiedName)) {
+        if (org.apache.commons.lang.StringUtils.isBlank(userSpecifiedName)) {
             userSpecifiedName = getRandomVolumeName();
         }
 
