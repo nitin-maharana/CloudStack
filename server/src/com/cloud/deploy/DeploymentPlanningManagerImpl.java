@@ -16,44 +16,6 @@
 // under the License.
 package com.cloud.deploy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Timer;
-import java.util.TreeSet;
-
-import javax.inject.Inject;
-import javax.naming.ConfigurationException;
-
-import com.cloud.utils.fsm.StateMachine2;
-
-import org.apache.log4j.Logger;
-import org.apache.cloudstack.affinity.AffinityGroupProcessor;
-import org.apache.cloudstack.affinity.AffinityGroupService;
-import org.apache.cloudstack.affinity.AffinityGroupVMMapVO;
-import org.apache.cloudstack.affinity.AffinityGroupVO;
-import org.apache.cloudstack.affinity.AffinityGroupDomainMapVO;
-import org.apache.cloudstack.affinity.dao.AffinityGroupDao;
-import org.apache.cloudstack.affinity.dao.AffinityGroupVMMapDao;
-import org.apache.cloudstack.affinity.dao.AffinityGroupDomainMapDao;
-import org.apache.cloudstack.engine.cloud.entity.api.db.VMReservationVO;
-import org.apache.cloudstack.engine.cloud.entity.api.db.dao.VMReservationDao;
-import org.apache.cloudstack.engine.subsystem.api.storage.DataStore;
-import org.apache.cloudstack.engine.subsystem.api.storage.DataStoreManager;
-import org.apache.cloudstack.engine.subsystem.api.storage.StoragePoolAllocator;
-import org.apache.cloudstack.framework.config.dao.ConfigurationDao;
-import org.apache.cloudstack.framework.messagebus.MessageBus;
-import org.apache.cloudstack.framework.messagebus.MessageSubscriber;
-import org.apache.cloudstack.managed.context.ManagedContextTimerTask;
-import org.apache.cloudstack.storage.datastore.db.PrimaryDataStoreDao;
-import org.apache.cloudstack.storage.datastore.db.StoragePoolVO;
-import org.apache.cloudstack.utils.identity.ManagementServerNode;
-
 import com.cloud.agent.AgentManager;
 import com.cloud.agent.Listener;
 import com.cloud.agent.api.AgentControlAnswer;
@@ -81,6 +43,7 @@ import com.cloud.dc.dao.HostPodDao;
 import com.cloud.deploy.DeploymentPlanner.ExcludeList;
 import com.cloud.deploy.DeploymentPlanner.PlannerResourceUsage;
 import com.cloud.deploy.dao.PlannerHostReservationDao;
+import com.cloud.domain.dao.DomainDao;
 import com.cloud.exception.AffinityConflictException;
 import com.cloud.exception.ConnectionException;
 import com.cloud.exception.InsufficientServerCapacityException;
@@ -131,6 +94,40 @@ import com.cloud.vm.VirtualMachine.State;
 import com.cloud.vm.VirtualMachineProfile;
 import com.cloud.vm.dao.UserVmDao;
 import com.cloud.vm.dao.VMInstanceDao;
+import org.apache.cloudstack.affinity.AffinityGroupProcessor;
+import org.apache.cloudstack.affinity.AffinityGroupService;
+import org.apache.cloudstack.affinity.AffinityGroupVMMapVO;
+import org.apache.cloudstack.affinity.AffinityGroupVO;
+import org.apache.cloudstack.affinity.dao.AffinityGroupDao;
+import org.apache.cloudstack.affinity.dao.AffinityGroupDomainMapDao;
+import org.apache.cloudstack.affinity.dao.AffinityGroupVMMapDao;
+import org.apache.cloudstack.engine.cloud.entity.api.db.VMReservationVO;
+import org.apache.cloudstack.engine.cloud.entity.api.db.dao.VMReservationDao;
+import org.apache.cloudstack.engine.subsystem.api.storage.DataStore;
+import org.apache.cloudstack.engine.subsystem.api.storage.DataStoreManager;
+import org.apache.cloudstack.engine.subsystem.api.storage.StoragePoolAllocator;
+import org.apache.cloudstack.framework.config.dao.ConfigurationDao;
+import org.apache.cloudstack.framework.messagebus.MessageBus;
+import org.apache.cloudstack.framework.messagebus.MessageSubscriber;
+import org.apache.cloudstack.managed.context.ManagedContextTimerTask;
+import org.apache.cloudstack.storage.datastore.db.PrimaryDataStoreDao;
+import org.apache.cloudstack.storage.datastore.db.StoragePoolVO;
+import org.apache.cloudstack.utils.identity.ManagementServerNode;
+import org.apache.log4j.Logger;
+
+import javax.ejb.Local;
+import javax.inject.Inject;
+import javax.naming.ConfigurationException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Timer;
+import java.util.TreeSet;
 
 public class DeploymentPlanningManagerImpl extends ManagerBase implements DeploymentPlanningManager, Manager, Listener,
 StateListener<State, VirtualMachine.Event, VirtualMachine> {
@@ -142,6 +139,8 @@ StateListener<State, VirtualMachine.Event, VirtualMachine> {
     protected UserVmDao _vmDao;
     @Inject
     protected VMInstanceDao _vmInstanceDao;
+    @Inject
+    protected DomainDao _domainDao;
     @Inject
     protected AffinityGroupDao _affinityGroupDao;
     @Inject
@@ -362,6 +361,44 @@ StateListener<State, VirtualMachine.Event, VirtualMachine> {
             }
             s_logger.debug("Cannot deploy to specified host, returning.");
             return null;
+        }
+
+        // call affinitygroup chain
+        long vmGroupCount = _affinityGroupVMMapDao.countAffinityGroupsForVm(vm.getId());
+
+        if (vmGroupCount > 0) {
+            for (AffinityGroupProcessor processor : _affinityProcessors) {
+                processor.process(vmProfile, plan, avoids);
+            }
+        }
+
+        if (vm.getType() == VirtualMachine.Type.User || vm.getType() == VirtualMachine.Type.DomainRouter) {
+            checkForNonDedicatedResources(vmProfile, dc, avoids);
+        }
+        if (s_logger.isDebugEnabled()) {
+            s_logger.debug("Deploy avoids pods: " + avoids.getPodsToAvoid() + ", clusters: " + avoids.getClustersToAvoid() + ", hosts: " + avoids.getHostsToAvoid());
+        }
+
+        // call planners
+        // DataCenter dc = _dcDao.findById(vm.getDataCenterId());
+        // check if datacenter is in avoid set
+        if (avoids.shouldAvoid(dc)) {
+            if (s_logger.isDebugEnabled()) {
+                s_logger.debug("DataCenter id = '" + dc.getId() + "' provided is in avoid set, DeploymentPlanner cannot allocate the VM, returning.");
+            }
+            return null;
+        }
+
+        if (planner == null) {
+            String plannerName = offering.getDeploymentPlanner();
+            if (plannerName == null) {
+                if (vm.getHypervisorType() == HypervisorType.BareMetal) {
+                    plannerName = "BareMetalPlanner";
+                } else {
+                    plannerName = _configDao.getValue(Config.VmDeploymentPlanner.key());
+                }
+            }
+            planner = getDeploymentPlannerByName(plannerName);
         }
 
         if (vm.getLastHostId() != null && haVmTag == null) {
@@ -611,73 +648,32 @@ StateListener<State, VirtualMachine.Event, VirtualMachine> {
             long vmAccountId = vm.getAccountId();
             long vmDomainId = vm.getDomainId();
 
-            //Lists all explicitly dedicated resources from vm account ID or domain ID.
             List<Long> allPodsFromDedicatedID = new ArrayList<Long>();
             List<Long> allClustersFromDedicatedID = new ArrayList<Long>();
             List<Long> allHostsFromDedicatedID = new ArrayList<Long>();
 
-            //Whether the dedicated resources belong to Domain or not. If not, it may belongs to Account or no dedication.
-            List<AffinityGroupDomainMapVO> domainGroupMappings = _affinityGroupDomainMapDao.listByDomain(vmDomainId);
+            Set<Long> allowedDomains = _domainDao.getDomainParentIds(vmDomainId);
 
-            //For temporary storage and indexing.
-            List<DedicatedResourceVO> tempStorage;
-
-            if (domainGroupMappings == null || domainGroupMappings.isEmpty()) {
-                //The dedicated resource belongs to VM Account ID.
-
-                tempStorage = _dedicatedDao.searchDedicatedPods(null, vmDomainId, vmAccountId, null).first();
-
-                for(DedicatedResourceVO vo : tempStorage) {
+            for(DedicatedResourceVO vo : _dedicatedDao.listAvailableResources(vmAccountId, allowedDomains.toArray(new Long[allowedDomains.size()]))) {
+                if(vo.getPodId() != null) {
                     allPodsFromDedicatedID.add(vo.getPodId());
+                    continue;
                 }
 
-                tempStorage.clear();
-                tempStorage = _dedicatedDao.searchDedicatedClusters(null, vmDomainId, vmAccountId, null).first();
-
-                for(DedicatedResourceVO vo : tempStorage) {
+                if(vo.getClusterId() != null) {
                     allClustersFromDedicatedID.add(vo.getClusterId());
+                    continue;
                 }
 
-                tempStorage.clear();
-                tempStorage = _dedicatedDao.searchDedicatedHosts(null, vmDomainId, vmAccountId, null).first();
-
-                for(DedicatedResourceVO vo : tempStorage) {
+                if(vo.getHostId() != null) {
                     allHostsFromDedicatedID.add(vo.getHostId());
                 }
-
-                //Remove the dedicated ones from main list
-                allPodsInDc.removeAll(allPodsFromDedicatedID);
-                allClustersInDc.removeAll(allClustersFromDedicatedID);
-                allHostsInDc.removeAll(allHostsFromDedicatedID);
             }
-            else {
-                //The dedicated resource belongs to VM Domain ID or No dedication.
 
-                tempStorage = _dedicatedDao.searchDedicatedPods(null, vmDomainId, null, null).first();
-
-                for(DedicatedResourceVO vo : tempStorage) {
-                    allPodsFromDedicatedID.add(vo.getPodId());
-                }
-
-                tempStorage.clear();
-                tempStorage = _dedicatedDao.searchDedicatedClusters(null, vmDomainId, null, null).first();
-
-                for(DedicatedResourceVO vo : tempStorage) {
-                    allClustersFromDedicatedID.add(vo.getClusterId());
-                }
-
-                tempStorage.clear();
-                tempStorage = _dedicatedDao.searchDedicatedHosts(null, vmDomainId, null, null).first();
-
-                for(DedicatedResourceVO vo : tempStorage) {
-                    allHostsFromDedicatedID.add(vo.getHostId());
-                }
-
-                //Remove the dedicated ones from main list
-                allPodsInDc.removeAll(allPodsFromDedicatedID);
-                allClustersInDc.removeAll(allClustersFromDedicatedID);
-                allHostsInDc.removeAll(allHostsFromDedicatedID);
-            }
+            //Remove the dedicated ones from main list
+            allPodsInDc.removeAll(allPodsFromDedicatedID);
+            allClustersInDc.removeAll(allClustersFromDedicatedID);
+            allHostsInDc.removeAll(allHostsFromDedicatedID);
 
             //Add in avoid list or no addition if no dedication
             avoids.addPodList(allPodsInDc);

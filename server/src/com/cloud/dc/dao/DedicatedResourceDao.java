@@ -40,6 +40,8 @@ public interface DedicatedResourceDao extends GenericDao<DedicatedResourceVO, Lo
 
     Pair<List<DedicatedResourceVO>, Integer> searchDedicatedZones(Long dataCenterId, Long domainId, Long accountId, Long affinityGroupId);
 
+    List<DedicatedResourceVO> listAvailableResources(Long accountId, Long... domains);
+
     List<DedicatedResourceVO> listByAccountId(Long accountId);
 
     List<DedicatedResourceVO> listByDomainId(Long domainId);

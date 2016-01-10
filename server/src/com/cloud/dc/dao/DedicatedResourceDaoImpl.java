@@ -16,9 +16,13 @@
 // under the License.
 package com.cloud.dc.dao;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import com.cloud.dc.DedicatedResourceVO;
@@ -35,6 +39,7 @@ import com.cloud.utils.db.TransactionLegacy;
 @Component
 @DB
 public class DedicatedResourceDaoImpl extends GenericDaoBase<DedicatedResourceVO, Long> implements DedicatedResourceDao {
+    private static final Logger s_logger = Logger.getLogger(DedicatedResourceDaoImpl.class);
     protected final SearchBuilder<DedicatedResourceVO> ZoneSearch;
     protected final SearchBuilder<DedicatedResourceVO> PodSearch;
     protected final SearchBuilder<DedicatedResourceVO> ClusterSearch;
@@ -309,6 +314,65 @@ public class DedicatedResourceDaoImpl extends GenericDaoBase<DedicatedResourceVO
             }
         }
         return searchAndCount(sc, null);
+    }
+
+    @Override
+    public List<DedicatedResourceVO> listAvailableResources(Long accountId, Long... domains) {
+        StringBuilder sql = new StringBuilder("select data_center_id, pod_id, cluster_id, host_id, domain_id, account_id,");
+        sql.append("affinity_group_id from dedicated_resources where account_id = ? or (account_id IS NULL and domain_id in (");
+
+        for(int i = 0; i < domains.length; i++) {
+            if(i == (domains.length - 1)) {
+                sql.append("?));");
+            } else {
+                sql.append("?, ");
+            }
+        }
+        TransactionLegacy txn = TransactionLegacy.currentTxn();
+        ArrayList<DedicatedResourceVO> result = new ArrayList<DedicatedResourceVO>();
+        try(PreparedStatement pstmt = txn.prepareStatement(sql.toString());) {
+            if(accountId != null) {
+                pstmt.setLong(1, accountId);
+            }
+            for (int i = 2; i < (domains.length + 2); i++) {
+                pstmt.setLong(i, domains[i-2]);
+            }
+            try(ResultSet rs = pstmt.executeQuery();) {
+                while(rs.next()) {
+                    Long dataCenterId = rs.getLong(1);
+                    if(rs.wasNull()) {
+                        dataCenterId = null;
+                    }
+                    Long podId = rs.getLong(2);
+                    if(rs.wasNull()) {
+                        podId = null;
+                    }
+                    Long clusterId = rs.getLong(3);
+                    if(rs.wasNull()) {
+                        clusterId = null;
+                    }
+                    Long hostId = rs.getLong(4);
+                    if(rs.wasNull()) {
+                        hostId = null;
+                    }
+                    Long domainId = rs.getLong(5);
+                    if(rs.wasNull()) {
+
+                    }
+                    Long tempAccountId = rs.getLong(6);
+                    if(rs.wasNull()) {
+                        tempAccountId= null;
+                    }
+                    Long affinityGroupId = rs.getLong(7);
+                    result.add(new DedicatedResourceVO(dataCenterId, podId, clusterId, hostId, domainId, tempAccountId, affinityGroupId));
+                }
+            } catch (Exception e) {
+                s_logger.warn("Exception: ", e);
+            }
+        } catch (Exception e) {
+            s_logger.warn("Exception: ", e);
+        }
+        return result;
     }
 
     @Override

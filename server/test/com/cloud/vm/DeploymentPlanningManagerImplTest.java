@@ -25,7 +25,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.naming.ConfigurationException;
 
-import org.apache.cloudstack.affinity.dao.AffinityGroupDomainMapDao;
+import com.cloud.domain.dao.DomainDao;
+import com.cloud.ha.HighAvailabilityManager;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -48,6 +49,7 @@ import org.apache.cloudstack.affinity.AffinityGroupProcessor;
 import org.apache.cloudstack.affinity.AffinityGroupService;
 import org.apache.cloudstack.affinity.dao.AffinityGroupDao;
 import org.apache.cloudstack.affinity.dao.AffinityGroupVMMapDao;
+import org.apache.cloudstack.affinity.dao.AffinityGroupDomainMapDao;
 import org.apache.cloudstack.engine.cloud.entity.api.db.dao.VMReservationDao;
 import org.apache.cloudstack.engine.subsystem.api.storage.DataStoreManager;
 import org.apache.cloudstack.framework.config.dao.ConfigurationDao;
@@ -405,6 +407,14 @@ public class DeploymentPlanningManagerImplTest {
         @Bean
         public HostGpuGroupsDao hostGpuGroupsDap() {
             return Mockito.mock(HostGpuGroupsDao.class);
+        }
+
+        @Bean
+        public DomainDao domainDao() {return Mockito.mock(DomainDao.class);}
+
+        @Bean
+        public HighAvailabilityManager highAvailabilityManager() {
+            return Mockito.mock(HighAvailabilityManager.class);
         }
 
         public static class Library implements TypeFilter {
