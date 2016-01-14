@@ -200,7 +200,7 @@
                             error: function(json) {
 
                                 cloudStack.dialog.notice({
-                                    message: _s(json.responseText)
+                                    message: parseXMLHttpResponse(json)
                                 }); //Error message in the API needs to be improved
                                 $healthCheckDialog.dialog('close');
                                 $('.overlay').remove();
