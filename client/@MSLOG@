@@ -1,0 +1,398 @@
+2016-01-06 23:04:38,434 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [bootstrap] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-core/4.7.0.0/cloud-core-4.7.0.0.jar!/META-INF/cloudstack/bootstrap/spring-bootstrap-context.xml]
+2016-01-06 23:04:38,439 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [bootstrap] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-core/4.7.0.0/cloud-core-4.7.0.0.jar!/META-INF/cloudstack/bootstrap/spring-bootstrap-context-inheritable.xml]
+2016-01-06 23:04:38,919 DEBUG [c.c.u.c.EncryptionSecretKeyChecker] (main:null) (logid:) Encryption Type: none
+2016-01-06 23:04:38,924 INFO  [c.c.u.LogUtils] (main:null) (logid:) log4j configuration found at /home/priyank/git_cloud/internal-cloudstack/client/target/generated-webapp/WEB-INF/classes/log4j-cloud.xml
+2016-01-06 23:04:38,992 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loaded module context [bootstrap] in 561 ms
+2016-01-06 23:04:38,993 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy: bootstrap
+2016-01-06 23:04:38,994 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:   system
+2016-01-06 23:04:38,994 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:     core
+2016-01-06 23:04:38,994 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:       allocator
+2016-01-06 23:04:38,995 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         host-allocator-random
+2016-01-06 23:04:38,995 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         planner
+2016-01-06 23:04:38,995 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           api-planner
+2016-01-06 23:04:38,995 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           baremetal-planner
+2016-01-06 23:04:38,996 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           explicit-dedication
+2016-01-06 23:04:38,996 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           host-anti-affinity
+2016-01-06 23:04:38,996 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           implicit-dedication
+2016-01-06 23:04:38,997 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-planner
+2016-01-06 23:04:38,997 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           skip-heurestics
+2016-01-06 23:04:38,998 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           user-concentrated-pod
+2016-01-06 23:04:38,998 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         server-allocator
+2016-01-06 23:04:38,999 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:       api
+2016-01-06 23:04:39,000 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         acl-static-role-based
+2016-01-06 23:04:39,000 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         ldap
+2016-01-06 23:04:39,001 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         md5
+2016-01-06 23:04:39,001 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         pbkdf2
+2016-01-06 23:04:39,002 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         plaintext
+2016-01-06 23:04:39,002 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         rate-limit
+2016-01-06 23:04:39,003 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         saml2
+2016-01-06 23:04:39,003 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         server-api
+2016-01-06 23:04:39,004 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         sha256salted
+2016-01-06 23:04:39,004 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         solidfire-intg-test
+2016-01-06 23:04:39,005 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:       api-config
+2016-01-06 23:04:39,005 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:       backend
+2016-01-06 23:04:39,005 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         compute
+2016-01-06 23:04:39,006 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           baremetal-compute
+2016-01-06 23:04:39,006 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           hyperv-compute
+2016-01-06 23:04:39,007 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           kvm-compute
+2016-01-06 23:04:39,007 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           ovm-compute
+2016-01-06 23:04:39,008 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           ovm3-compute
+2016-01-06 23:04:39,008 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-alert-adapter-compute
+2016-01-06 23:04:39,009 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-compute
+2016-01-06 23:04:39,009 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-fencer
+2016-01-06 23:04:39,010 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-investigator
+2016-01-06 23:04:39,010 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           xenserver-compute
+2016-01-06 23:04:39,010 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         network
+2016-01-06 23:04:39,011 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           baremetal-network
+2016-01-06 23:04:39,014 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           bigswitch
+2016-01-06 23:04:39,014 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           contrail
+2016-01-06 23:04:39,015 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           elb
+2016-01-06 23:04:39,015 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           globodns
+2016-01-06 23:04:39,016 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           midonet
+2016-01-06 23:04:39,016 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           netscaler
+2016-01-06 23:04:39,017 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           nvp
+2016-01-06 23:04:39,017 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           opendaylight
+2016-01-06 23:04:39,018 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           ovs
+2016-01-06 23:04:39,018 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           paloalto
+2016-01-06 23:04:39,018 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-network
+2016-01-06 23:04:39,019 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           ssp
+2016-01-06 23:04:39,019 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           vcs
+2016-01-06 23:04:39,020 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           vxlan
+2016-01-06 23:04:39,020 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         server-alert-adapter-backend
+2016-01-06 23:04:39,021 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         storage
+2016-01-06 23:04:39,021 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           baremetal-storage
+2016-01-06 23:04:39,022 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-alert-adapter-storage
+2016-01-06 23:04:39,022 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-storage
+2016-01-06 23:04:39,023 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           server-template-adapter
+2016-01-06 23:04:39,023 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-allocator
+2016-01-06 23:04:39,024 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-image-default
+2016-01-06 23:04:39,024 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-image-s3
+2016-01-06 23:04:39,024 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-image-swift
+2016-01-06 23:04:39,025 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-volume-cloudbyte
+2016-01-06 23:04:39,025 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-volume-default
+2016-01-06 23:04:39,026 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:           storage-volume-solidfire
+2016-01-06 23:04:39,026 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:       discoverer
+2016-01-06 23:04:39,027 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         baremetal-discoverer
+2016-01-06 23:04:39,027 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         hyperv-discoverer
+2016-01-06 23:04:39,028 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         ovm-discoverer
+2016-01-06 23:04:39,028 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         ovm3-discoverer
+2016-01-06 23:04:39,029 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         secondary-storage-discoverer
+2016-01-06 23:04:39,029 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         server-discoverer
+2016-01-06 23:04:39,030 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Module Hierarchy:         xenserver-discoverer
+2016-01-06 23:04:39,033 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-framework-config/4.7.0.0/cloud-framework-config-4.7.0.0.jar!/META-INF/cloudstack/system/spring-framework-config-system-context.xml]
+2016-01-06 23:04:39,034 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-server/4.7.0.0/cloud-server-4.7.0.0.jar!/META-INF/cloudstack/system/spring-server-system-context.xml]
+2016-01-06 23:04:39,034 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-core/4.7.0.0/cloud-core-4.7.0.0.jar!/META-INF/cloudstack/system/spring-core-system-context.xml]
+2016-01-06 23:04:39,034 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-framework-db/4.7.0.0/cloud-framework-db-4.7.0.0.jar!/META-INF/cloudstack/system/spring-framework-db-system-context.xml]
+2016-01-06 23:04:39,035 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-engine-schema/4.7.0.0/cloud-engine-schema-4.7.0.0.jar!/META-INF/cloudstack/system/spring-engine-schema-system-checkers-context.xml]
+2016-01-06 23:04:39,035 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-framework-config/4.7.0.0/cloud-framework-config-4.7.0.0.jar!/META-INF/cloudstack/system/spring-framework-config-system-context-inheritable.xml]
+2016-01-06 23:04:39,036 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-core/4.7.0.0/cloud-core-4.7.0.0.jar!/META-INF/cloudstack/system/spring-core-system-context-inheritable.xml]
+2016-01-06 23:04:39,036 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-plugin-network-contrail/4.7.0.0/cloud-plugin-network-contrail-4.7.0.0.jar!/META-INF/cloudstack/system/spring-contrail-system-context-inheritable.xml]
+2016-01-06 23:04:39,036 INFO  [o.a.c.s.m.m.i.DefaultModuleDefinitionSet] (main:null) (logid:) Loading module context [system] from URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-core/4.7.0.0/cloud-core-4.7.0.0.jar!/META-INF/cloudstack/bootstrap/spring-bootstrap-context-inheritable.xml]
+2016-01-06 23:04:41,850 INFO  [c.c.u.d.T.Transaction] (main:null) (logid:) Is Data Base High Availiability enabled? Ans : false
+2016-01-06 23:04:46,152 ERROR [c.c.u.d.Merovingian2] (main:null) (logid:) Unable to get a new db connection
+com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)
+	at com.mysql.jdbc.Util.getInstance(Util.java:360)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:956)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:935)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:924)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:870)
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2144)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2069)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:790)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:377)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:395)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:215)
+	at org.apache.commons.dbcp.DriverManagerConnectionFactory.createConnection(DriverManagerConnectionFactory.java:75)
+	at org.apache.commons.dbcp.PoolableConnectionFactory.makeObject(PoolableConnectionFactory.java:582)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1188)
+	at org.apache.commons.dbcp.PoolingDataSource.getConnection(PoolingDataSource.java:106)
+	at com.cloud.utils.db.TransactionLegacy.getStandaloneConnectionWithException(TransactionLegacy.java:202)
+	at com.cloud.utils.db.Merovingian2.<init>(Merovingian2.java:68)
+	at com.cloud.utils.db.Merovingian2.createLockMaster(Merovingian2.java:88)
+	at com.cloud.server.LockMasterListener.<init>(LockMasterListener.java:33)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:148)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:121)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:277)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1077)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:981)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:487)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:458)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:293)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:290)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:636)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:934)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:479)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.loadContext(DefaultModuleDefinitionSet.java:145)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet$2.with(DefaultModuleDefinitionSet.java:122)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:245)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:250)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:233)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.loadContexts(DefaultModuleDefinitionSet.java:117)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.load(DefaultModuleDefinitionSet.java:79)
+	at org.apache.cloudstack.spring.module.factory.ModuleBasedContextFactory.loadModules(ModuleBasedContextFactory.java:37)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.init(CloudStackSpringContext.java:71)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.<init>(CloudStackSpringContext.java:58)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.<init>(CloudStackSpringContext.java:62)
+	at org.apache.cloudstack.spring.module.web.CloudStackContextLoaderListener.contextInitialized(CloudStackContextLoaderListener.java:53)
+	at org.mortbay.jetty.handler.ContextHandler.startContext(ContextHandler.java:549)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:136)
+	at org.mortbay.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1282)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.jetty.webapp.WebAppContext.doStart(WebAppContext.java:499)
+	at org.mortbay.jetty.plugin.Jetty6PluginWebAppContext.doStart(Jetty6PluginWebAppContext.java:115)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:156)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.plugin.Jetty6PluginServer.start(Jetty6PluginServer.java:132)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:454)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:396)
+	at org.mortbay.jetty.plugin.AbstractJettyRunMojo.execute(AbstractJettyRunMojo.java:210)
+	at org.mortbay.jetty.plugin.Jetty6RunMojo.execute(Jetty6RunMojo.java:184)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:134)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:862)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:286)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	... 98 more
+Caused by: java.net.UnknownHostException: @DBHOST@
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1252)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1164)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1098)
+	... 96 more
+2016-01-06 23:04:46,164 WARN  [o.a.c.s.m.c.ResourceApplicationContext] (main:null) (logid:) Exception encountered during context initialization - cancelling refresh attempt
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'lockMasterListener' defined in URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-server/4.7.0.0/cloud-server-4.7.0.0.jar!/META-INF/cloudstack/system/spring-server-system-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [com.cloud.server.LockMasterListener]: Constructor threw exception; nested exception is com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:285)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1077)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:981)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:487)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:458)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:293)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:290)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:636)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:934)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:479)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.loadContext(DefaultModuleDefinitionSet.java:145)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet$2.with(DefaultModuleDefinitionSet.java:122)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:245)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:250)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:233)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.loadContexts(DefaultModuleDefinitionSet.java:117)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.load(DefaultModuleDefinitionSet.java:79)
+	at org.apache.cloudstack.spring.module.factory.ModuleBasedContextFactory.loadModules(ModuleBasedContextFactory.java:37)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.init(CloudStackSpringContext.java:71)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.<init>(CloudStackSpringContext.java:58)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.<init>(CloudStackSpringContext.java:62)
+	at org.apache.cloudstack.spring.module.web.CloudStackContextLoaderListener.contextInitialized(CloudStackContextLoaderListener.java:53)
+	at org.mortbay.jetty.handler.ContextHandler.startContext(ContextHandler.java:549)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:136)
+	at org.mortbay.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1282)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.jetty.webapp.WebAppContext.doStart(WebAppContext.java:499)
+	at org.mortbay.jetty.plugin.Jetty6PluginWebAppContext.doStart(Jetty6PluginWebAppContext.java:115)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:156)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.plugin.Jetty6PluginServer.start(Jetty6PluginServer.java:132)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:454)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:396)
+	at org.mortbay.jetty.plugin.AbstractJettyRunMojo.execute(AbstractJettyRunMojo.java:210)
+	at org.mortbay.jetty.plugin.Jetty6RunMojo.execute(Jetty6RunMojo.java:184)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:134)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:862)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:286)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [com.cloud.server.LockMasterListener]: Constructor threw exception; nested exception is com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:163)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:121)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:277)
+	... 65 more
+Caused by: com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+	at com.cloud.utils.db.Merovingian2.<init>(Merovingian2.java:74)
+	at com.cloud.utils.db.Merovingian2.createLockMaster(Merovingian2.java:88)
+	at com.cloud.server.LockMasterListener.<init>(LockMasterListener.java:33)
+	... 72 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	... 100 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	... 98 more
+Caused by: java.net.UnknownHostException: @DBHOST@
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1252)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1164)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1098)
+	... 96 more
+2016-01-06 23:04:46,174 WARN  [o.a.c.s.m.w.CloudStackContextLoaderListener] (main:null) (logid:) fatal exception happened; the management server died; Error creating bean with name 'lockMasterListener' defined in URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-server/4.7.0.0/cloud-server-4.7.0.0.jar!/META-INF/cloudstack/system/spring-server-system-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [com.cloud.server.LockMasterListener]: Constructor threw exception; nested exception is com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'lockMasterListener' defined in URL [jar:file:/home/priyank/.m2/repository/org/apache/cloudstack/cloud-server/4.7.0.0/cloud-server-4.7.0.0.jar!/META-INF/cloudstack/system/spring-server-system-context.xml]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [com.cloud.server.LockMasterListener]: Constructor threw exception; nested exception is com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:285)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1077)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:981)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:487)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:458)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:293)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:223)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:290)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:191)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:636)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:934)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:479)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.loadContext(DefaultModuleDefinitionSet.java:145)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet$2.with(DefaultModuleDefinitionSet.java:122)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:245)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:250)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.withModule(DefaultModuleDefinitionSet.java:233)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.loadContexts(DefaultModuleDefinitionSet.java:117)
+	at org.apache.cloudstack.spring.module.model.impl.DefaultModuleDefinitionSet.load(DefaultModuleDefinitionSet.java:79)
+	at org.apache.cloudstack.spring.module.factory.ModuleBasedContextFactory.loadModules(ModuleBasedContextFactory.java:37)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.init(CloudStackSpringContext.java:71)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.<init>(CloudStackSpringContext.java:58)
+	at org.apache.cloudstack.spring.module.factory.CloudStackSpringContext.<init>(CloudStackSpringContext.java:62)
+	at org.apache.cloudstack.spring.module.web.CloudStackContextLoaderListener.contextInitialized(CloudStackContextLoaderListener.java:53)
+	at org.mortbay.jetty.handler.ContextHandler.startContext(ContextHandler.java:549)
+	at org.mortbay.jetty.servlet.Context.startContext(Context.java:136)
+	at org.mortbay.jetty.webapp.WebAppContext.startContext(WebAppContext.java:1282)
+	at org.mortbay.jetty.handler.ContextHandler.doStart(ContextHandler.java:518)
+	at org.mortbay.jetty.webapp.WebAppContext.doStart(WebAppContext.java:499)
+	at org.mortbay.jetty.plugin.Jetty6PluginWebAppContext.doStart(Jetty6PluginWebAppContext.java:115)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.jetty.handler.ContextHandlerCollection.doStart(ContextHandlerCollection.java:156)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerCollection.doStart(HandlerCollection.java:152)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.handler.HandlerWrapper.doStart(HandlerWrapper.java:130)
+	at org.mortbay.jetty.Server.doStart(Server.java:224)
+	at org.mortbay.component.AbstractLifeCycle.start(AbstractLifeCycle.java:50)
+	at org.mortbay.jetty.plugin.Jetty6PluginServer.start(Jetty6PluginServer.java:132)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.startJetty(AbstractJettyMojo.java:454)
+	at org.mortbay.jetty.plugin.AbstractJettyMojo.execute(AbstractJettyMojo.java:396)
+	at org.mortbay.jetty.plugin.AbstractJettyRunMojo.execute(AbstractJettyRunMojo.java:210)
+	at org.mortbay.jetty.plugin.Jetty6RunMojo.execute(Jetty6RunMojo.java:184)
+	at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo(DefaultBuildPluginManager.java:134)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:208)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:153)
+	at org.apache.maven.lifecycle.internal.MojoExecutor.execute(MojoExecutor.java:145)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:116)
+	at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject(LifecycleModuleBuilder.java:80)
+	at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build(SingleThreadedBuilder.java:51)
+	at org.apache.maven.lifecycle.internal.LifecycleStarter.execute(LifecycleStarter.java:128)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:307)
+	at org.apache.maven.DefaultMaven.doExecute(DefaultMaven.java:193)
+	at org.apache.maven.DefaultMaven.execute(DefaultMaven.java:106)
+	at org.apache.maven.cli.MavenCli.execute(MavenCli.java:862)
+	at org.apache.maven.cli.MavenCli.doMain(MavenCli.java:286)
+	at org.apache.maven.cli.MavenCli.main(MavenCli.java:197)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced(Launcher.java:289)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.launch(Launcher.java:229)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode(Launcher.java:415)
+	at org.codehaus.plexus.classworlds.launcher.Launcher.main(Launcher.java:356)
+Caused by: org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [com.cloud.server.LockMasterListener]: Constructor threw exception; nested exception is com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:163)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:121)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:277)
+	... 65 more
+Caused by: com.cloud.utils.exception.CloudRuntimeException: Unable to initialize a connection to the database for locking purposes
+	at com.cloud.utils.db.Merovingian2.<init>(Merovingian2.java:74)
+	at com.cloud.utils.db.Merovingian2.createLockMaster(Merovingian2.java:88)
+	at com.cloud.server.LockMasterListener.<init>(LockMasterListener.java:33)
+	... 72 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	... 100 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	... 98 more
+Caused by: java.net.UnknownHostException: @DBHOST@
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1252)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1164)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1098)
+	... 96 more
