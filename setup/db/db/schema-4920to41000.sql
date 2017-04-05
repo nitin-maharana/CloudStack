@@ -230,7 +230,7 @@ JOIN `cloud`.`vm_snapshots` s ON (s.service_offering_id = o.id AND s.vm_id = v.i
 WHERE (o.cpu is null AND o.speed IS NULL AND o.ram_size IS NULL) AND
 (d.name = 'cpuNumber' OR d.name = 'cpuSpeed' OR d.name = 'memory');
 
--- CLOUDSTACK-9827: Storage tags stored in multiple places
+-- CLOUDSTACK-9827: Storage tags stored in multiple places.
 DROP VIEW IF EXISTS `cloud`.`storage_tag_view`;
 
 DROP TABLE IF EXISTS `cloud`.`netscaler_servicepackages`;
